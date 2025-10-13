@@ -1,0 +1,18 @@
+# Flipkart Manual Testing - Bug Report
+
+| Bug ID | Module | Bug Description | Steps to Reproduce | Test Data | Expected Result | Actual Result | Severity | Priority | Status | Remarks |
+|--------|--------|----------------|-----------------|-----------|----------------|---------------|----------|---------|--------|---------|
+| BR_001 | Login | OTP delay beyond acceptable time | 1. Go to Flipkart login page<br>2. Enter mobile/email<br>3. Click Request OTP | Mobile: xxxxxxxxxxx | OTP should arrive within 60 seconds | OTP received after ~3 minutes | Medium | Medium | Open | Network/OTP latency; affects UX |
+| BR_002 | Login | Generic error message for invalid OTP | 1. Enter mobile/email<br>2. Click Request OTP<br>3. Enter wrong OTP<br>4. Click Verify | Mobile: xxxxxxxxxxx<br>OTP: 123456 | Error message “OTP incorrect” displayed | Error message “Something went wrong” displayed | High | High | Open | Confusing for users; needs clear messaging |
+| BR_003 | Login | Invalid mobile/email not validated immediately | 1. Enter invalid email/mobile<br>2. Click Request OTP | Email: abc@<br>Mobile: 123 | Error message should display immediately | No error until submit | Medium | Medium | Open | UX improvement needed |
+| BR_004 | Search | Special characters return unrelated results | 1. Enter !@#$% in search bar<br>2. Click Search | Product: !@#$% | “No results found” message displayed | Unrelated products displayed | Medium | Medium | Open | Functional/UX bug |
+| BR_005 | Search | Sorting/filters not applied immediately | 1. Search for product<br>2. Apply filter/sort | Product: iPhone 14 | Filter/sort applied immediately | Results do not update until page refresh | Medium | Medium | Open | Functional bug |
+| BR_006 | Product | Product image not loading | 1. Open product page | Product: iPhone 14 | Product images should load | Image placeholder displayed | Medium | Medium | Open | Performance/UX issue |
+| BR_007 | Cart | Out-of-stock product briefly shows “Add to Cart” | 1. Open out-of-stock product page | Out-of-stock product | Only “Notify Me” button visible | “Add to Cart” visible 1-2 sec | High | High | Open | Negative flow; misleads user |
+| BR_008 | Cart | Cart items not retained after logout-login | 1. Add product to cart<br>2. Logout<br>3. Login again<br>4. Go to cart | Product: iPhone 14 | Cart retains items | Cart empty after login | Critical | High | Open | Persistence bug |
+| BR_009 | Checkout | Mandatory field validation bypass | 1. Go to cart<br>2. Click Checkout<br>3. Leave mandatory fields empty<br>4. Place order | Address: (empty) | Cannot proceed without mandatory fields | Sometimes allows progress | High | High | Open | Functional bug |
+| BR_010 | UI/Usability | Buttons not changing state on mobile/tablet | 1. Open Flipkart on mobile/tablet<br>2. Observe buttons | N/A | Buttons show hover/click states | Buttons static | Low | Medium | Open | UX improvement |
+| BR_011 | UI/Usability | Responsive layout issue on tablet/landscape | 1. Open Flipkart in tablet/landscape | N/A | Layout adjusts correctly | Some text/images misaligned | Medium | Medium | Open | UX bug |
+| BR_012 | UI/Usability | Font/image scaling issue on mobile | 1. Open product page on mobile<br>2. Observe layout | N/A | Text/images scale properly | Text overlaps images | Medium | Medium | Open | UX bug |
+| BR_013 | Performance | Slow page load on checkout/product detail page | 1. Open checkout/product page | N/A | Page loads <3 sec | Page loads 7-10 sec | Medium | Medium | Open | Performance |
+| BR_014 | Misc | Promotional banner link broken | 1. Click on promotional banner | N/A | Banner opens correct page | 404 error page displayed | Low | Medium | Open | Functional/UI issue |
