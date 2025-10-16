@@ -1,0 +1,37 @@
+package com.Baseclass;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Library {
+	
+	public static Properties prop;
+	public static WebDriver driver;
+	
+	public void launchapplication() throws IOException {
+		FileInputStream input = new FileInputStream("/Flipkart-Automation-Framework/src/test/resources/Properties/Config.Property");
+		prop = new Properties();
+		prop.load(input);
+		
+		try {
+			if(prop.getProperty("browser").equalsIgnoreCase("chrome"))
+			{
+				WebDriverManager.chromedriver().setup();
+				driver = new ChromeDriver();
+			}
+			else if(prop.getProperty("browser").equalsIgnoreCase("firefox"))
+			{
+				WebDriverManager.firefoxdriver().setup();
+				driver = new FirefoxDriver();
+			}
+		}
+	}
+
+
+}
