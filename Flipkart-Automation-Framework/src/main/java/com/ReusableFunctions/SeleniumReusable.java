@@ -1,5 +1,16 @@
 package com.ReusableFunctions;
 
-public class SeleniumReusable {
+import org.openqa.selenium.WebDriver;
 
+import com.Baseclass.Library;
+
+public class SeleniumReusable extends Library
+{
+	public SeleniumReusable(WebDriver driver)
+	{
+		this.driver = driver;
+		
+	}
+	
+	
 }
